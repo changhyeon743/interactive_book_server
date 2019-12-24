@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>For IT Project</p>
+    <ol>
+      <% stories.forEach((e)=>{ %>
+        <li><a href="/story/<%= e.token %>"><%= e.title %> - <%= e.author%></a></li>
+      <% }) %>
+    </ol>
+    
+    <br><br>
+    <a href="/create">직접 만들기</a>
+  </body>
+</html>
