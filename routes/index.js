@@ -12,7 +12,14 @@ function index(app) {
   })
 
   app.get('/story/:token',(req,res)=> {
-    Story.find({token: req.params.token},(err, stories)=> {
+    Story.findOne({token: req.params.token},(err, stories)=> {
+      if (err) throw err;
+      res.json(stories)
+    })
+  })
+
+  app.get('/stories/flat', (req,res)=> {
+    Story.find({},{branches: 0},(err,stories)=> {
       if (err) throw err;
       res.json(stories)
     })
