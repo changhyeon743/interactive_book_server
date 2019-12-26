@@ -12,9 +12,17 @@ function index(app) {
   })
 
   app.get('/story/:token',(req,res)=> {
+    
     Story.findOne({token: req.params.token},(err, stories)=> {
       if (err) throw err;
       res.json(stories)
+    })
+  })
+
+  app.get('/story/delete/:token',(req,res)=> {
+    Story.deleteOne({token: req.params.token}, (err,story)=> {
+      if (err) throw err;
+      res.json(story)
     })
   })
 
