@@ -21,7 +21,9 @@ function index(app) {
   app.get('/stories/flat', (req,res)=> {
     Story.find({},{branches: 0},(err,stories)=> {
       if (err) throw err;
-      res.json(stories)
+      res.json({
+        'books': stories
+      })
     })
   })
 
